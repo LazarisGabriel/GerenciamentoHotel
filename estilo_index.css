@@ -1,0 +1,83 @@
+/*
+------- PRINCIPAL
+*/
+
+body {
+    margin: 0px;
+    background: #D4F1F4;
+}
+
+#container {
+    height: 100%;
+    width: 100%;
+}
+
+/*
+------- CABEÇALHO
+*/
+
+header {
+    height: 40px;
+    background: #05445E;
+}
+
+header h1 {
+    display: inline;
+    color: white;
+    text-align: left;
+    vertical-align: center;
+    margin-left: 10px;
+}
+
+/*
+------- FORMULÁRIO LOGIN
+*/
+
+#formularioLogin {
+    height: 240px;
+    width: 310px;
+    background: #189AB4;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 20px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -110px;
+    margin-left: -140px;
+}
+
+label {
+    color: white;
+    float: left;
+    margin-left: 15px;
+}
+
+div #formularioLogin h2{
+    color: white;
+    font-family: "Inter";
+}
+
+div form input.campoForm {
+    border: none;
+    opacity: 85%;
+    width: 279px;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.botao {
+    width: 285px;
+    height: 25px;
+    border: none;
+    margin-top: 10px;
+    border-radius: 5px;
+    background: #05445E;
+    color: white;
+}
+
+.esqueceu {
+    margin-top: -20px;
+}
