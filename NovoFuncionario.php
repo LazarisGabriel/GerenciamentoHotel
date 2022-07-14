@@ -38,7 +38,7 @@
                         <img src="img/calendario.png">
                         <span>Reservas</span>
                     </a>
-                    <a href="#">
+                    <a href="Estoque.php">
                         <img src="img/estoque.png">
                         <span>Estoque</span>
                     </a>
