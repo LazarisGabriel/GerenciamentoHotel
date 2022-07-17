@@ -30,7 +30,7 @@
                     <i class="fas fa-times" id="cancel"></i>
                 </label>
                 <div class="sidebar">
-                    <a href="TelaPrincipal.php" class="active">
+                    <a href="TelaPrincipal" class="active">
                         <img src="img/home.png">
                         <span>Tela Principal</span>
                     </a>
