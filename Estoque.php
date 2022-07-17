@@ -1,15 +1,28 @@
 <?php
     session_start();
+    
+    include("conexao.php");
+
+    $sql = "SELECT A.NOME, 
+                   A.QUANTIDADE, 
+                   B.NUMERO
+               FROM ESTOQUE A
+               INNER JOIN QUARTO B ON B.HANDLE = A.QUARTO 
+               ORDER BY B.HANDLE ASC
+               LIMIT 16";
+
+    $result = pg_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset='utf-8'>
+        <meta charset='utf-8' name="viewport">
         <title>Estoque - Gerenciamento de Hotel</title>
         
         <link rel="stylesheet" type="text/css" href="css/normalize.css">
         <link rel="stylesheet" type="text/css" href="estilo_estoque.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         
         <!--[if lt IE 9]>
@@ -30,7 +43,7 @@
                     <i class="fas fa-times" id="cancel"></i>
                 </label>
                 <div class="sidebar">
-                    <a href="TelaPrincipal" class="active">
+                    <a href="TelaPrincipal.php" class="active">
                         <img src="img/home.png">
                         <span>Tela Principal</span>
                     </a>
@@ -63,12 +76,34 @@
 
             </div> <!-- FIM PESQUISA -->
 
-            <div id="formularioEstoque"> <!-- INICIO LISTA -->
+            <div id="listagemEstoque"> <!-- INICIO LISTA -->
 
-                
-                
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="nome" scope="col">Nome</th>
+                        <th class="numero" scope="col">Quarto</th>
+                        <th class="quantidade" scope="col">Quantidade</th>
+                        <th class="solicitarReposicao" scope="col">Alterar</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <?php
+                        while($user_data = pg_fetch_assoc($result)){
+                            echo "<tr>";
+                            echo "  <td class="."nome"."> " . $user_data['nome'] . "</td>";
+                            echo "  <td class="."numero"."> " . $user_data['numero'] . "</td>";
+                            echo "  <td class="."quantidade"."> " . $user_data['quantidade'] . "</td>";
+                            echo "  <td class="."solicitarReposicao"."><button class="."reposicaoBotao".">Solicitar Reposição</button></td>";
+                            echo "</tr>";
+                        }
+                    ?>
+
+                </tbody>
+            </table>
+
             </div> <!-- FIM LISTA -->
-
 
         </div>
         

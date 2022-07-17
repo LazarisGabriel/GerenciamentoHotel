@@ -186,6 +186,11 @@ header img {
     top: 20px;
 }
 
+label {
+    color: white;
+    float: left;
+    margin-left: 15px;
+}
 
 /*
 ------- CAMPO DE PESQUISA
@@ -234,10 +239,10 @@ header img {
 }
 
 /*
-------- FORMULÁRIO
+------- TABELA
 */
 
-#formularioEstoque{
+#listagemEstoque{
     height: 700px;
     width: 1000px;
     background: #05445E;
@@ -252,26 +257,38 @@ header img {
     margin-left: -500px;
 }
 
-label {
+.table {
+    width: 100%;
     color: white;
-    float: left;
-    margin-left: 15px;
 }
 
-label span {
-    float: left;
+.table tr {
+    font-weight: bold;
+    text-align: left;
 }
 
-div #formularioEstoque h2{
-    color: white;
-    font-family: "Inter";
-    margin-bottom: 15px;
+.table th {
+    padding-left: 15px;
+    font-size: 25px;
 }
 
-div form input.campoForm {
+.table td {
+    padding-left: 16px;
+    font-size: 20px;
+    border-top: 1px solid black;
+    border-right: 1px solid white;
+}
+
+tr .reposicaoBotao {
+    width: 180px;
+    height: 32px;
     border: none;
-    opacity: 85%;
-    width: 279px;
-    height: 25px;
-    border-radius: 5px;
+    margin-top: 5px;
+    border-radius: 8px;
+    background: white;
+    color: black;
+}
+
+.solicitarReposicao, .numero, .quantidade {
+    text-align: center;
 }
