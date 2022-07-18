@@ -1,5 +1,8 @@
 <?php
     session_start();
+    
+    $_SESSION["offset"] = 0;
+    unset($_SESSION['where']);
 ?>
 
 <!DOCTYPE html>

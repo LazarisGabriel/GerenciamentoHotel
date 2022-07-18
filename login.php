@@ -13,6 +13,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])){
         $_SESSION['loginErro'] = "Usuário ou senha não estão cadastrados no sistema";
         header('Location: index.php');
     } else {
+        $_SESSION["offset"] = 0;
         header('Location: TelaPrincipal.php');
     }
 } else {
