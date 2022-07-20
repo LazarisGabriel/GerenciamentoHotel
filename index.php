@@ -8,7 +8,7 @@
         <meta charset='utf-8'>
         <title>Gerenciamento de Hotel</title>
 
-        <link rel="stylesheet" type="text/css" href="estilo_index.css">
+        <link rel="stylesheet" type="text/css" href="css/estilo_index.css">
         
         <link rel="stylesheet" type="text/css" href="css/normalize.css">
         

@@ -12,7 +12,7 @@
         <title>Novo Funcionário - Gerenciamento de Hotel</title>
         
         <link rel="stylesheet" type="text/css" href="css/normalize.css">
-        <link rel="stylesheet" type="text/css" href="estilo_novoFuncionario.css">
+        <link rel="stylesheet" type="text/css" href="css/estilo_novoFuncionario.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         
         <!--[if lt IE 9]>

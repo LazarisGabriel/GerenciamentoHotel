@@ -39,7 +39,7 @@
         <title>Estoque - Gerenciamento de Hotel</title>
         
         <link rel="stylesheet" type="text/css" href="css/normalize.css">
-        <link rel="stylesheet" type="text/css" href="estilo_estoque.css">
+        <link rel="stylesheet" type="text/css" href="css/estilo_estoque.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         
@@ -124,22 +124,20 @@
 
                 <div class="rolagem">
 
-                    <input type="button" id="botaoVolta" class="button" value="<"></input>
+                    <input type="button" id="botaoVolta" class="button" value="<" onclick="voltar()"></input>
                     
                     <span id="pagina"> <?php if ($_SESSION["offset"] != 0) {echo $_SESSION["offset"]/16 + 1;} else {echo $_SESSION["offset"] + 1;} ?> </span>
                     
-                    <input type="button" id="botaoAvanca" class="button" value=">"></button>
+                    <input type="button" id="botaoAvanca" class="button" value=">" onclick="avancar()"></button>
 
                 </div>
 
-                <script>
+                <script type="text/javascript">
 
                     var avancar = function() {
                         
                         <?php
-                            if (($contador/16) > ($_SESSION["offset"])){
-                                $_SESSION["offset"] += 16;
-                            }
+                            $_SESSION["offset"] += 16;
                         ?>
                         
                         window.location.href = "Estoque.php";
@@ -147,17 +145,11 @@
 
                     var voltar = function() {
                         <?php
-                            if ($_SESSION["offset"] > 0) {
-                                $_SESSION["offset"] -= 16;
-                            }
+                            //$_SESSION["offset"] -= 16;
                         ?>
 
                         window.location.href = "Estoque.php";
                     }
-
-                    document.getElementById("botaoVolta").onclick = voltar;
-
-                    document.getElementById("botaoAvanca").onclick = avancar;
 
                     function pesquisar() {
                         
@@ -167,6 +159,7 @@
                     }
 
                 </script>
+        
 
             </div> <!-- FIM LISTA -->
 
