@@ -2,6 +2,7 @@
     session_start();
 
     $_SESSION["offset"] = 0;
+    $_SESSION["offsetHospedes"] = 0;
     unset($_SESSION['where']);
 ?>
 
@@ -40,6 +41,10 @@
                     <a href="#">
                         <img src="img/calendario.png">
                         <span>Reservas</span>
+                    </a>
+                    <a href="Hospedes.php">
+                        <img src="img/pessoas.png">
+                        <span>Hóspedes</span>
                     </a>
                     <a href="Estoque.php">
                         <img src="img/estoque.png">

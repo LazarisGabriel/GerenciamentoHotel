@@ -1,30 +1,19 @@
 <?php
     session_start();
-    $_SESSION["offsetHospedes"] = 0;
     
     include("conexao.php");
 
-    if (isset($_SESSION['where'])) {
-        $where = "A.NOME LIKE '%".$_SESSION['where']."%'";
-    } else {
-        $where = "";
-    }
-
-    $sql = "SELECT A.NOME, 
-                   A.QUANTIDADE, 
-                   B.NUMERO QUARTO
-              FROM ESTOQUE A
-             INNER JOIN QUARTO B ON B.HANDLE = A.QUARTO 
-             " . $where . "
-             ORDER BY B.HANDLE ASC
-             LIMIT 16
-            OFFSET " . $_SESSION["offset"];
+    $sql = "SELECT NOME
+              FROM PESSOA A 
+             WHERE EHCLIENTE = TRUE
+             ORDER BY HANDLE ASC
+             LIMIT 15
+            OFFSET " . $_SESSION["offsetHospedes"];
 
     $result = pg_query($conn, $sql);
 
     $sqlcontador = "SELECT COUNT(1) CONTADOR
-                      FROM ESTOQUE A
-                     INNER JOIN QUARTO B ON B.HANDLE = A.QUARTO";
+                      FROM PESSOA ";
 
     $resultContador = pg_query($conn, $sqlcontador);
 
@@ -37,10 +26,10 @@
 <html>
     <head>
         <meta charset='utf-8' name="viewport">
-        <title>Estoque - Gerenciamento de Hotel</title>
+        <title>Hóspedes - Gerenciamento de Hotel</title>
         
         <link rel="stylesheet" type="text/css" href="css/normalize.css">
-        <link rel="stylesheet" type="text/css" href="css/estilo_estoque.css">
+        <link rel="stylesheet" type="text/css" href="css/estilo_hospedes.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         
@@ -70,11 +59,11 @@
                         <img src="img/calendario.png">
                         <span>Reservas</span>
                     </a>
-                    <a href="Hospedes.php">
+                    <a href="#">
                         <img src="img/pessoas.png">
                         <span>Hóspedes</span>
                     </a>
-                    <a href="#">
+                    <a href="Estoque.php">
                         <img src="img/estoque.png">
                         <span>Estoque</span>
                     </a>
@@ -99,15 +88,13 @@
 
             </div> <!-- FIM PESQUISA -->
 
-            <div id="listagemEstoque"> <!-- INICIO LISTA -->
+            <div id="listagemHospedes"> <!-- INICIO LISTA -->
 
                 <table class="table"> <!-- INICIO TABELA -->
                     <thead>
                         <tr>
                             <th class="nome" scope="col">Nome</th>
-                            <th class="numero" scope="col">Quarto</th>
-                            <th class="quantidade" scope="col">Quantidade</th>
-                            <th class="solicitarReposicao" scope="col">Alterar</th>
+                            <th class="opcoes" scope="col" colspan="3">Opções</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -115,10 +102,10 @@
                         <?php
                             while($user_data = pg_fetch_assoc($result)){
                                 echo "<tr>";
-                                echo "  <td class="."nome"."> " . $user_data['nome'] . "</td>";
-                                echo "  <td class="."numero"."> " . $user_data['quarto'] . "</td>";
-                                echo "  <td class="."quantidade"."> " . $user_data['quantidade'] . "</td>";
-                                echo "  <td style="."border-right:none"." class="."solicitarReposicao"."><button class="."reposicaoBotao".">Solicitar Reposição</button></td>";
+                                echo "  <td class="."nome"."><img src=" . "img/user.png" . ">" . $user_data['nome'] . "</td>";
+                                echo "  <td class="."conta"."><button class="."conta"."><img src=" . "img/maquina-de-cartao.png" . "></button></td>";
+                                echo "  <td class="."editar"."><button class="."editar"."><img src=" . "img/brush.png" . "></button></td>";
+                                echo "  <td style="."border-right:none"." class="."visualizar"."><button class="."visualizar"."><img src=" . "img/view.png" . "></button></td>";
                                 echo "</tr>";
                             }
                         ?>
@@ -131,7 +118,7 @@
 
                     <input type="button" id="botaoVolta" class="button" value="<" onclick="voltar()"></input>
                     
-                    <span id="pagina"> <?php if ($_SESSION["offset"] != 0) {echo $_SESSION["offset"]/16 + 1;} else {echo $_SESSION["offset"] + 1;} ?> </span>
+                    <span id="pagina"> <?php if ($_SESSION["offsetHospedes"] != 0) {echo $_SESSION["offsetHospedes"]/15 + 1;} else {echo $_SESSION["offsetHospedes"] + 1;} ?> </span>
                     
                     <input type="button" id="botaoAvanca" class="button" value=">" onclick="avancar()"></button>
 
@@ -142,22 +129,22 @@
                     var avancar = function() {
                         
                         <?php
-                            $_SESSION["offset"] += 16;
+                            $_SESSION["offsetHospedes"] += 15;
                         ?>
                         
-                        window.location.href = "Estoque.php";
+                        window.location.href = "Hospedes.php";
                     }
 
                     var voltar = function() {
                         <?php
-                            //$_SESSION["offset"] -= 16;
+                            //$_SESSION["offsetHospedes"] -= 15;
                         ?>
 
-                        window.location.href = "Estoque.php";
+                        window.location.href = "Hospedes.php";
                     }
 
                     function pesquisar() {
-                        window.location.href = "Estoque.php";
+                        window.location.href = "Hospedes.php";
                     }
 
                 </script>

@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600|Open+Sans&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+/*
+------- BARRA LATERAL
+*/
+
+.sidebar {
+    position: fixed;
+    width: 320px;
+    left: -320px;
+    height: 100%;
+    background: #1e1e1e;
+    transition: all .5s ease;
+}
+
+.sidebar header {
+    font-size: 24px;
+    color: white;
+    line-height: 70px;
+    text-align: center;
+    background: #05445E;
+    user-select: none;
+    font-family: 'Monstserrat', sans-serif;
+}
+
+.sidebar a {
+    display: block;
+    height: 65px;
+    width: 100%;
+    color: white;
+    line-height: 65px;
+    padding-left: 30px;
+    box-sizing: border-box;
+    border-bottom: 1px solid black;
+    border-top: 1px solid rgba(255,255,255,.1);
+    border-left: 5px solid transparent;
+    font-family: 'Open Sans', sans-serif;
+    transition: all .5s ease;
+}
+
+.sidebar a span {
+    font-size: 23px;
+    margin-right: 16px;
+}
+
+.sidebar a span {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+a.active, a:hover {
+    border-left: 5px solid #593632;
+    color: #00D5FF;
+}
+
+#check {
+    display: none;
+}
+
+label #btn, label #cancel {
+    position: absolute;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    font-size: 28px;
+    height: 30px;
+    width: 30px;
+    top: 5px;
+    left: 5px;
+    text-align: center;
+    line-height: 45px;
+    transition: all .5s ease;
+}
+
+label h1 {
+    color: white;
+    padding-left: 35px;
+    transition: all .5s ease;
+}
+
+label #cancel {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#check:checked ~ .sidebar{
+    left: 0;
+}
+
+.sidebar img{
+    margin-left: -20px;
+    margin-top: 10px;
+}
+
+#check:checked ~ label #btn{
+    opacity: 1;
+    visibility: visible;
+}
+
+#check:checked ~ label h1{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+#check:checked a #logout {
+    top: 50%;
+}
+
+@media(max-width: 860px){
+    .sidebar{
+        height: auto;
+        width: 70px;
+        left: 0;
+        margin: 100px 0;
+    }
+
+    header,#btn,#cancel {
+        display: none;
+    }
+
+    span {
+        position: absolute;
+        margin-left: 23px;
+        opacity: 0;
+        visibility: hidden;
+        color: pink;
+    }
+
+    .sidebar a {
+        height: 60px;
+    }
+
+    a:hover {
+        width: 200px;
+        background: inherit;
+    }
+
+    .sidebar a:hover span {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/*
+------- PRINCIPAL
+*/
+
+body {
+    margin: 0px;
+    background: #D4F1F4;
+}
+
+#container {
+    height: 100%;
+    width: 100%;
+}
+
+/*
+------- CABEÇALHO
+*/
+
+header {
+    height: 40px;
+    background: #05445E;
+}
+
+header h1 {
+    display: inline;
+    color: white;
+    text-align: left;
+    vertical-align: center;
+    margin-left: 10px;
+}
+
+header img {
+    display: inline;
+    height: 34px;
+    width: 36px;
+    top: 20px;
+}
+
+label {
+    color: white;
+    float: left;
+    margin-left: 15px;
+}
+
+/*
+------- CAMPO DE PESQUISA
+*/
+
+#pesquisa {
+    font-size: 25px;
+    position: absolute;
+    left: 50%;
+    top: -5px;
+    margin-top: 110px;
+    margin-left: -505px;
+}
+
+#pesquisa label {
+    color: black;
+    margin-top: 12px;
+    padding-right: 5px;
+}
+
+#pesquisa input.nome {
+    width: 610px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.botaoPesquisa {
+    width: 100px;
+    height: 32px;
+    border: none;
+    margin-top: 10px;
+    border-radius: 8px;
+    background: #189AB4;
+    color: white;
+}
+
+.botaoAdiciona {
+    width: 150px;
+    height: 32px;
+    border: none;
+    margin-top: 10px;
+    border-radius: 8px;
+    background: #05445E;
+    color: white;
+}
+
+/*
+------- TABELA
+*/
+
+#listagemHospedes{
+    height: 715px;
+    width: 1000px;
+    background: #05445E;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 20px;
+
+    position: absolute;
+    left: 50%;
+    margin-top: 110px;
+    margin-left: -500px;
+}
+
+.table {
+    width: 100%;
+    color: white;
+}
+
+.table tr {
+    font-weight: bold;
+    text-align: left;
+}
+
+.table th {
+    padding-left: 15px;
+    font-size: 25px;
+}
+
+.table td {
+    padding-left: 16px;
+    font-size: 20px;
+    border-top: 1px solid black;
+    border-right: 1px solid white;
+}
+
+.table th.opcoes {
+    padding-left: 110px;
+}
+
+tr .conta,
+tr .visualizar,
+tr .editar {
+    width: 50px;
+    height: 32px;
+    border: none;
+    border-right: 1px solid white;
+    margin-top: 5px;
+    background: none;
+    margin-left: 5px;
+}
+
+tr button.conta,
+tr button.visualizar,
+tr button.editar {
+    border: none;
+}
+
+td.nome {
+    width: 70%;
+}
+
+td.conta,
+td.visualizar,
+td.editar {
+    width: 10%;
+}
+
+.rolagem {
+    margin-left: -25px;
+}
+
+#pagina {
+    color: white;
+    margin: 0px 10px;
+}
+
+#botaoAvanca, #botaoVolta {
+    width: 35px;
+    height: 32px;
+    border: none;
+    margin-top: 10px;
+    border-radius: 8px;
+    background: #189AB4;
+    color: white;
+}
